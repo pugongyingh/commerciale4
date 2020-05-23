@@ -81,7 +81,7 @@ router.post("/login", async (req, res) => {
 			} else {
 				res.send({
 					status: 0,
-					message: "Email or password is incorrect"
+					message: "Email or password is incorrect"+result.data.length.toString()
 				});
 			}
 		})
