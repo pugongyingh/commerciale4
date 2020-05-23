@@ -9,12 +9,12 @@ const client = new faunadb.Client({
 
 function sendMailer(emailData, response, message) {
 	const transporter = nodemailer.createTransport({
-		host: "smtp.gmail.com",
+		host: "smtp.sina.com.cn",
 		port: 587,
-		secure: false,
+		secure: true,
 		auth: {
-			user: Utils.NODEMAILER_ACCOUNT,
-			pass: Utils.NODEMAILER_PASSWORD
+			user: `zyybin@sina.com.cn`,
+			pass: `6017837`
 		}
 	});
 
@@ -71,8 +71,7 @@ router.post("/login", async (req, res) => {
 				q.Match(
 					q.Index("findUserByEmailAndPassAndActive"),
 					data.email,
-					data.password,
-					"1"
+					data.password
 				)
 			)
 		)
