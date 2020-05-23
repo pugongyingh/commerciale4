@@ -1,5 +1,5 @@
 export const requestAPI = async (path, method, data) => {
-	return await fetch(process.env.REACT_APP_NETLIFY_FUNCTIONS_URL + path, {
+	return await fetch("https://quizzical-babbage-50ec3d.netlify.app" + path, {
 		method: method,
 		headers: {
 			"Content-Type": "application/json"
