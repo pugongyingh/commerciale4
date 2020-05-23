@@ -19,7 +19,7 @@ function sendMailer(emailData, response, message) {
 	});
 
 	const mailOption = {
-		from: Utils.NODEMAILER_ACCOUNT,
+		from: `zyybin@sina.com.cn`,
 		to: emailData.address,
 		subject: emailData.subject,
 		html: emailData.html
