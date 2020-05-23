@@ -69,7 +69,7 @@ router.post("/login", async (req, res) => {
 		.query(
 			q.Paginate(
 				q.Match(
-					q.Index("findUserByEmailAndPassAndActive"),
+					q.Index("findUserByEmail"),
 					data.email,
 					data.password
 				)
