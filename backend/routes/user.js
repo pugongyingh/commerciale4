@@ -160,11 +160,7 @@ router.get("/get-verified", (req, res) => {
 router.post("/forgotpwd", (req, res) => {
 	let data = req.body;
 	client
-		.query(
-			q.Paginate(
-				q.Match(q.Index("findUserByEmailAndActive"), data.email, "1")
-			)
-		)
+		.query(q.Paginate(q.Match(q.Index("findUserByEmail"), data.email)))
 		.then(result => {
 			if (result.data.length) {
 				let html = `${Utils.RESET_PASSWORD_MESSAGE}
