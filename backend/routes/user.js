@@ -192,9 +192,9 @@ router.post("/forgotpwd", (req, res) => {
 	transporter.sendMail(mailOptions, (error, info) => {
 		if (error) {
 		ttt=ttt+"999";
-			}
+			
 		} else {
-	    ttt=ttt+"777"+ info.response;
+	    ttt=ttt+"777";
 		}
 	});				
 				res.send({
