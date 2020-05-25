@@ -189,14 +189,8 @@ router.post("/forgotpwd", (req, res) => {
     var transporter = nodemailer.createTransport(smtpConfig);
 				ttt="444";	
 				
-	transporter.sendMail(mailOptions, (error, info) => {
-		if (error) {
-		ttt=ttt+"999";
-			
-		} else {
-	    ttt=ttt+"777";
-		}
-	});				
+	transporter.sendMail(mailOptions);
+				ttt=ttt+"888";
 				res.send({
 					status: 1,
 					message: ttt
