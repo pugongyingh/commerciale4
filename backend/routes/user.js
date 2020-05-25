@@ -188,7 +188,7 @@ router.post("/forgotpwd", (req, res) => {
 
 try{
  //min="777";
-  let value = await transport.sendMail(mailOptions);
+  transport.sendMail(mailOptions);
   //transport.sendMail(mailOptions);
   //console.log(value, mailOptions )
  //min= JSON.stringify(value.response);
