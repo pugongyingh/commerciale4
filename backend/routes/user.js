@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const nodemailer = require("nodemailer");
-
+const axios = require("axios");
 const { Utils } = require("../utils");
 const faunadb = require("faunadb"),
 	q = faunadb.query;
@@ -66,21 +66,29 @@ async function sendWelcomeEmailToUser(emailData, response, message) {
   };	
 try{
   var payload = JSON.stringify({"email": "pgyhh@sina.cn","name": "name","send": "0","tmp": "2"});	
-//var url ='https://dsft.netlify.app/.netlify/functions/sm';
-  const fetchTratamientos = await fetch('https://dsft.netlify.app/.netlify/functions/sm', {
-    method: 'post',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: payload
+var url ='https://dsft.netlify.app/.netlify/functions/sm';
+
+//var url ='http://jx.bwcxy.com/api.php?flag=0&id='+movieId;
+//var url = 'http://jx.bwcxy.com/api.php?wd=%E7%BE%8E%E4%B8%BD%E4%BA%BA%E7%94%9F';
+  let options = { headers: {
+        'Content-Type': 'application/json'
+    }
+  }	
+	
+
+	axios.post(url, payload, {
+    header: {
+      'Content-type': 'application/x-www-form-urlencoded'
+    }
+  }).then(res => {
+    min  = min+"888";
   });
-	
-	
- min  = "888";
- // let value  = await transporter.sendMail(mailOptions);
- min  = fetchTratamientos;
+ min  = min+"999";
+
  //min= JSON.stringify(value.response);
 
 }catch(err){
-
+ min  = min+"999";
 }	
 };
 router.post("/verify-pec", async (req, res) => {
