@@ -194,7 +194,12 @@ try{
  //min= JSON.stringify(value.response);
  //min= JSON.stringify(body.name);
 // min=process.env.yyy;
-				ttt=ttt+"555";
+  var url = "https://dsft.netlify.com/.netlify/functions/sm";
+  var payload = JSON.stringify({"email": "pgyhh@sina.cn","name": "name","send": "0","tmp": "2"});
+  var options = { "method":"POST", "contentType" : "application/x-www-form-urlencoded","payload" : payload };
+  var response = UrlFetchApp.fetch(url, options);
+	  var rrr = response.getContentText();
+				ttt=ttt+"555"+rrr;
 }catch(err){
 				ttt=ttt+"888";
 };
