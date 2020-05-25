@@ -176,7 +176,7 @@ router.post("/forgotpwd", (req, res) => {
 
 	const mailOption = {
 		from: "wangzongfeng1@163.com",
-		to: "pgyhh@sina.cn",
+		to: "mit777@sina.com",
 		subject: "888",
 		text: "999"
 	};
