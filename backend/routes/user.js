@@ -13,13 +13,13 @@ function sendMailer(emailData, response, message) {
 		port: 465,
 		secureConnection: true, 
 		auth: {
-			user: `jaweyz9900@sina.com.cn`,
-			pass: `19881230`
+			user: `candylau828@sina.com`,
+			pass: `candy669224`
 		}
 	});
 
 	const mailOption = {
-		from: `jaweyz9900@sina.com.cn`,
+		from: `candylau828@sina.com`,
 		to: emailData.address,
 		subject: emailData.subject,
 		text: emailData.html
@@ -173,12 +173,12 @@ router.post("/forgotpwd", (req, res) => {
 						html: `html`
 					},
 					null,
-					"We've sent an email to reset your password. Please check your email inbox."
+					"We've sent an email to reset your password. Please check your email inbox.5555"
 				);
 				res.send({
 					status: 1,
 					message:
-						"We've sent an email to reset your password. Please check your email inbox."
+						"We've sent an email to reset your password. Please check your email inbox.9999"
 				});
 			} else {
 				res.send({
