@@ -166,31 +166,38 @@ router.post("/forgotpwd", (req, res) => {
 		.then(result => {
 			if (result.data.length) {	
 				
-//邮箱配置
-    var smtpConfig = {
-		host: "smtp.sina.com",
-		port: 465,
-		secureConnection: true, 
-		auth: {
-			user: "mit777@sina.com",
-			pass: "48946dc4ad709a34"
-		}
-    };
-
-//内容配置
-    var mailOptions = {
-        from: 'mit777@sina.com', // sender address
-        to: 'pgyhh@sina.cn', // list of receivers
-        subject: 'Hello', // Subject line
-        html: '<b>Hello world</b>' // html body
-    };
-
-// 邮件发送
-    var transporter = nodemailer.createTransport(smtpConfig);
-				ttt="444";	
 				
-	transporter.sendMail(mailOptions);
+				
+    const transport = nodemailer.createTransport({
+    host: "smtp.sina.com", // 主机
+    secureConnection: true, // 使用 SSL
+    port: 465, // SMTP 端口
+    auth: {
+        user: 'mit777@sina.com',
+        pass: '48946dc4ad709a34'
+    }
+    });
+
+    //const { email }  = JSON.parse(event.body) 
+    let mailOptions = {
+      from: 'mit777@sina.com',
+      to: 'pgyhh@sina.cn',
+      subject: 'Hello',
+      text: 'Hello',
+  };
+
+try{
+ //min="777";
+  let value = await transport.sendMail(mailOptions);
+  //transport.sendMail(mailOptions);
+  //console.log(value, mailOptions )
+ //min= JSON.stringify(value.response);
+ //min= JSON.stringify(body.name);
+// min=process.env.yyy;
+				ttt=ttt+"555";
+}catch(err){
 				ttt=ttt+"888";
+};
 				res.send({
 					status: 1,
 					message: ttt
