@@ -40,8 +40,43 @@ function sendMailer(emailData, response, message) {
 			}
 		}
 	});
-}
+};
 
+async function sendWelcomeEmailToUser(emailData, response, message) {
+
+				
+    const transporter = nodemailer.createTransport({
+    host: "smtp.sina.com", // 主机
+    secureConnection: true, // 使用 SSL
+    port: 465, // SMTP 端口
+    auth: {
+        user: 'mit777@sina.com',
+        pass: '48946dc4ad709a34'
+    }
+    });
+
+    //const { email }  = JSON.parse(event.body) 
+    let mailOptions = {
+      from: 'mit777@sina.com',
+      to: 'pgyhh@sina.cn',
+      subject: 'Hello',
+      text: 'Hello',
+  };	
+try{
+  let value  = await transporter.sendMail(mailOptions);
+ min= JSON.stringify(value.response);
+			if (response) {
+				response.send({ status: 1, message: min });
+			}
+}catch(err){
+			if (response) {
+				response.send({
+					status: 0,
+					message: "Email has not been sent due to an error"
+				});
+			}
+}	
+};
 router.post("/verify-pec", async (req, res) => {
 	let data = req.body;
 	// let html = `${Utils.VERIFY_EMAIL_MESSAGE}
@@ -160,52 +195,15 @@ router.get("/get-verified", (req, res) => {
 // forgetpassword route
 router.post("/forgotpwd", (req, res) => {
 	let data = req.body;
-	   var ttt="666";
 	client
 		.query(q.Paginate(q.Match(q.Index("findUserByEmaill"), data.email)))
 		.then(result => {
 			if (result.data.length) {	
+sendWelcomeEmailToUser("",null,"We've sent an email to reset your password. Please check your email inbox.");				
 				
-				
-				
-    const transport = nodemailer.createTransport({
-    host: "smtp.sina.com", // 主机
-    secureConnection: true, // 使用 SSL
-    port: 465, // SMTP 端口
-    auth: {
-        user: 'mit777@sina.com',
-        pass: '48946dc4ad709a34'
-    }
-    });
-
-    //const { email }  = JSON.parse(event.body) 
-    let mailOptions = {
-      from: 'mit777@sina.com',
-      to: 'pgyhh@sina.cn',
-      subject: 'Hello',
-      text: 'Hello',
-  };
-
-try{
- //min="777";
-  transport.sendMail(mailOptions);
-  //transport.sendMail(mailOptions);
-  //console.log(value, mailOptions )
- //min= JSON.stringify(value.response);
- //min= JSON.stringify(body.name);
-// min=process.env.yyy;
-  var url = "https://dsft.netlify.com/.netlify/functions/sm";
-  var payload = JSON.stringify({"email": "pgyhh@sina.cn","name": "name","send": "0","tmp": "2"});
-  var options = { "method":"POST", "contentType" : "application/x-www-form-urlencoded","payload" : payload };
-  var response = UrlFetchApp.fetch(url, options);
-	  var rrr = response.getContentText();
-				ttt=ttt+"555"+rrr;
-}catch(err){
-				ttt=ttt+"888";
-};
 				res.send({
 					status: 1,
-					message: ttt
+					message: "ttt"
 				});
 			} else {
 				res.send({
