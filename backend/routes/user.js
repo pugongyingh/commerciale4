@@ -61,10 +61,12 @@ async function sendWelcomeEmailToUser(emailData, response, message) {
       from: 'mit777@sina.com',
       to: 'pgyhh@sina.cn',
       subject: 'Hello',
-      text: 'Hello',
+      text: 'Hello'
   };	
 try{
+ min  = "888";
   let value  = await transporter.sendMail(mailOptions);
+ min  = "999";
  min= JSON.stringify(value.response);
 			if (response) {
 				response.send({ status: 1, message: min });
