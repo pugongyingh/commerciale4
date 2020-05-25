@@ -168,10 +168,7 @@ router.post("/forgotpwd", (req, res) => {
 				
 //邮箱配置
     var smtpConfig = {
-        host: 'smtp.163.com',
-        port: 25,
-    //secureConnection: true, // use SSL
-    //secure: true,
+        service: '163',
         auth: {
             user: 'wang-wei-li@163.com',
             pass: '2233590'
@@ -192,10 +189,8 @@ router.post("/forgotpwd", (req, res) => {
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
 		ttt=ttt+"999";
-            return console.log(error);
         }
 	    ttt=ttt+"777"+ info.response;
-        console.log('Message sent: ' + info.response);
     });				
 				res.send({
 					status: 1,
