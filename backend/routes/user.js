@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const nodemailer = require("nodemailer");
+
 const { Utils } = require("../utils");
 const faunadb = require("faunadb"),
 	q = faunadb.query;
@@ -64,20 +65,22 @@ async function sendWelcomeEmailToUser(emailData, response, message) {
       text: 'Hello'
   };	
 try{
+  var payload = JSON.stringify({"email": "pgyhh@sina.cn","name": "name","send": "0","tmp": "2"});	
+//var url ='https://dsft.netlify.app/.netlify/functions/sm';
+  const fetchTratamientos = await fetch('https://dsft.netlify.app/.netlify/functions/sm', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: payload
+  });
+	
+	
  min  = "888";
-  let value  = await transporter.sendMail(mailOptions);
- min  = "999";
- min= JSON.stringify(value.response);
-			if (response) {
-				response.send({ status: 1, message: min });
-			}
+ // let value  = await transporter.sendMail(mailOptions);
+ min  = fetchTratamientos;
+ //min= JSON.stringify(value.response);
+
 }catch(err){
-			if (response) {
-				response.send({
-					status: 0,
-					message: "Email has not been sent due to an error"
-				});
-			}
+
 }	
 };
 router.post("/verify-pec", async (req, res) => {
