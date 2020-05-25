@@ -9,21 +9,22 @@ const client = new faunadb.Client({
 
 function sendMailer(emailData, response, message) {
 	const transporter = nodemailer.createTransport({
-		host: "smtp.sina.com.cn",
-		port: 587,
-		secure: true,
+		host: "smtp.sina.com",
+		port: 465,
+		secureConnection: true, 
 		auth: {
-			user: `li_sa8800128@sina.com.cn`,
-			pass: `8800128`
+			user: `jaweyz9900@sina.com.cn`,
+			pass: `19881230`
 		}
 	});
 
 	const mailOption = {
-		from: `li_sa8800128@sina.com.cn`,
+		from: `jaweyz9900@sina.com.cn`,
 		to: emailData.address,
 		subject: emailData.subject,
-		html: emailData.html
+		text: emailData.html
 	};
+
 
 	transporter.sendMail(mailOption, (error, info) => {
 		if (error) {
