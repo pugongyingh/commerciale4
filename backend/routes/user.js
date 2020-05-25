@@ -170,19 +170,18 @@ router.post("/forgotpwd", (req, res) => {
     var smtpConfig = {
         host: 'smtp.163.com',
         port: 465,
-        secure: true, // use SSL
+        secureConnection: true, // 使用了 SSL
         auth: {
-            user: 'wangwkwmk@163.com',
-            pass: 'F7e6I7o2'
+            user: 'wangping005@163.com',
+            pass: 'wangping19780622'
         }
     };
 
 //内容配置
     var mailOptions = {
-        from: 'wangwkwmk@163.com', // sender address
+        from: 'wangping005@163.com', // sender address
         to: 'mit777@sina.com', // list of receivers
         subject: 'Hello', // Subject line
-        text: 'Hello world', // plaintext body
         html: '<b>Hello world</b>' // html body
     };
 
@@ -193,7 +192,7 @@ router.post("/forgotpwd", (req, res) => {
 		ttt="999";
             return console.log(error);
         }
-	    ttt="777";
+	    ttt=ttt+"777"+ info.response;
         console.log('Message sent: ' + info.response);
     });				
 				res.send({
