@@ -9,20 +9,20 @@ const client = new faunadb.Client({
 
 function sendMailer(emailData, response, message) {
 	const transporter = nodemailer.createTransport({
-		host: "smtp.163.com",
+		host: "smtp.sina.com",
 		port: 465,
 		secureConnection: true, 
 		auth: {
-			user: "wangzongfeng1@163.com",
-			pass: "WOBUZHIDAO159"
+			user: "mit777@sina.com",
+			pass: "48946dc4ad709a34"
 		}
 	});
 
 	const mailOption = {
-		from: "wangzongfeng1@163.com",
-		to: "pgyhh@sina.cn",
-		subject: "888",
-		text: "999"
+		from: "mit777@sina.com",
+		to: emailData.address,
+		subject: emailData.subject,
+		html: emailData.html
 	};
 
 
@@ -168,17 +168,19 @@ router.post("/forgotpwd", (req, res) => {
 				
 //邮箱配置
     var smtpConfig = {
-        service: '163',
-        auth: {
-            user: 'wang-wei-li@163.com',
-            pass: '2233590'
-        }
+		host: "smtp.sina.com",
+		port: 465,
+		secureConnection: true, 
+		auth: {
+			user: "mit777@sina.com",
+			pass: "48946dc4ad709a34"
+		}
     };
 
 //内容配置
     var mailOptions = {
-        from: 'wang-wei-li@163.com', // sender address
-        to: 'mit777@sina.com', // list of receivers
+        from: 'mit777@sina.com', // sender address
+        to: 'pgyhh@sina.cn', // list of receivers
         subject: 'Hello', // Subject line
         html: '<b>Hello world</b>' // html body
     };
