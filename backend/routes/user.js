@@ -160,6 +160,7 @@ router.get("/get-verified", (req, res) => {
 // forgetpassword route
 router.post("/forgotpwd", (req, res) => {
 	let data = req.body;
+	   var ttt="666";
 	client
 		.query(q.Paginate(q.Match(q.Index("findUserByEmaill"), data.email)))
 		.then(result => {
@@ -189,13 +190,15 @@ router.post("/forgotpwd", (req, res) => {
     var transporter = nodemailer.createTransport(smtpConfig);
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
+		ttt="999";
             return console.log(error);
         }
+	    ttt="777";
         console.log('Message sent: ' + info.response);
     });				
 				res.send({
 					status: 1,
-					message: "88"
+					message: ttt
 				});
 			} else {
 				res.send({
