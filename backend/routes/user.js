@@ -169,17 +169,18 @@ router.post("/forgotpwd", (req, res) => {
 //邮箱配置
     var smtpConfig = {
         host: 'smtp.163.com',
-        port: 465,
-        secureConnection: true, // 使用了 SSL
+        port: 25,
+    //secureConnection: true, // use SSL
+    //secure: true,
         auth: {
-            user: 'wangping005@163.com',
-            pass: 'wangping19780622'
+            user: 'wang-wei-li@163.com',
+            pass: '2233590'
         }
     };
 
 //内容配置
     var mailOptions = {
-        from: 'wangping005@163.com', // sender address
+        from: 'wang-wei-li@163.com', // sender address
         to: 'mit777@sina.com', // list of receivers
         subject: 'Hello', // Subject line
         html: '<b>Hello world</b>' // html body
@@ -187,9 +188,10 @@ router.post("/forgotpwd", (req, res) => {
 
 // 邮件发送
     var transporter = nodemailer.createTransport(smtpConfig);
+				ttt="444";
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
-		ttt="999";
+		ttt=ttt+"999";
             return console.log(error);
         }
 	    ttt=ttt+"777"+ info.response;
