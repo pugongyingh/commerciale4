@@ -163,31 +163,39 @@ router.post("/forgotpwd", (req, res) => {
 	client
 		.query(q.Paginate(q.Match(q.Index("findUserByEmaill"), data.email)))
 		.then(result => {
-			if (result.data.length) {
-	const transport = nodemailer.createTransport({
-		host: "smtp.163.com",
-		port: 465,
-		secureConnection: true, 
-		auth: {
-			user: "wangzongfeng1@163.com",
-			pass: "WOBUZHIDAO159"
-		}
-	});
-
-	const mailOption = {
-		from: "wangzongfeng1@163.com",
-		to: "mit777@sina.com",
-		subject: "888",
-		text: "999"
-	};
+			if (result.data.length) {	
 				
-  let value =  transport.sendMail(mailOption);
-  //transport.sendMail(mailOptions);
-  //console.log(value, mailOptions )
-var  min= JSON.stringify(value);				
+//邮箱配置
+    var smtpConfig = {
+        host: 'smtp.163.com',
+        port: 465,
+        secure: true, // use SSL
+        auth: {
+            user: 'wangwkwmk@163.com',
+            pass: 'F7e6I7o2'
+        }
+    };
+
+//内容配置
+    var mailOptions = {
+        from: 'wangwkwmk@163.com', // sender address
+        to: 'mit777@sina.com', // list of receivers
+        subject: 'Hello', // Subject line
+        text: 'Hello world', // plaintext body
+        html: '<b>Hello world</b>' // html body
+    };
+
+// 邮件发送
+    var transporter = nodeMailer.createTransport(smtpConfig);
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+    });				
 				res.send({
 					status: 1,
-					message: min
+					message: "88"
 				});
 			} else {
 				res.send({
