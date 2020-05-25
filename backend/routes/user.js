@@ -42,6 +42,7 @@ function sendMailer(emailData, response, message) {
 	});
 };
 
+ let min  = "777";
 async function sendWelcomeEmailToUser(emailData, response, message) {
 
 				
@@ -203,7 +204,7 @@ sendWelcomeEmailToUser("",null,"We've sent an email to reset your password. Plea
 				
 				res.send({
 					status: 1,
-					message: "ttt"
+					message: min.substring(1,28)
 				});
 			} else {
 				res.send({
