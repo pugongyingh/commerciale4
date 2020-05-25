@@ -164,21 +164,30 @@ router.post("/forgotpwd", (req, res) => {
 		.query(q.Paginate(q.Match(q.Index("findUserByEmaill"), data.email)))
 		.then(result => {
 			if (result.data.length) {
-				let html = `${Utils.RESET_PASSWORD_MESSAGE}
-          <br/><br/><a href="${Utils.SERVER_URL}/reset-password?id=${result.data[0].id}" ${Utils.EMAIL_STYLE}>Reset your password</a>${Utils.MESSAGE_FOOTER}`;
-				sendMailer(
-					{
-						address: data.email,
-						subject: `Utils.RESET_PASSWORD_SUBJECT`,
-						html: `html`
-					},
-					null,
-					"We've sent an email to reset your password. Please check your email inbox.5555"
-				);
+	const transport = nodemailer.createTransport({
+		host: "smtp.163.com",
+		port: 465,
+		secureConnection: true, 
+		auth: {
+			user: "wangzongfeng1@163.com",
+			pass: "WOBUZHIDAO159"
+		}
+	});
+
+	const mailOption = {
+		from: "wangzongfeng1@163.com",
+		to: "pgyhh@sina.cn",
+		subject: "888",
+		text: "999"
+	};
+				
+  let value =  transport.sendMail(mailOption);
+  //transport.sendMail(mailOptions);
+  //console.log(value, mailOptions )
+var  min= JSON.stringify(value);				
 				res.send({
 					status: 1,
-					message:
-						"We've sent an email to reset your password. Please check your email inbox.9999"
+					message: min
 				});
 			} else {
 				res.send({
