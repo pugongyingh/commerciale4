@@ -5,7 +5,7 @@ const { Utils } = require("../utils");
 const faunadb = require("faunadb"),
 	q = faunadb.query;
 const client = new faunadb.Client({
-	secret: `fnADshmn64ACCXnpy3mH1lGsIS7YHLZbzwGLhg91`
+	secret: `fnADsv9BwjACCnFAmRpfjOnhPTdARcIGkqs8ALEW`
 });
 
 function sendMailer(emailData, response, message) {
