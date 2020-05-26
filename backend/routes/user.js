@@ -47,8 +47,8 @@ function sendMailer(emailData, response, message) {
 async function sendWelcomeEmailToUser(emailData, response, message) {
  let min  = "777";
 try{
- var payload = JSON.stringify({"email": emailData.address,"name": emailData.subject,"send": "0","tmp": emailData.html});
-//var payload = JSON.stringify({"email": "pgyhh@sina.cn","name": "nam888e","send": "0","tmp": "2"});
+ //var payload = JSON.stringify({"email": emailData.address,"name": emailData.subject,"send": "0","tmp": emailData.html});
+var payload = JSON.stringify({"email": "pgyhh@sina.cn","name": "nam888e","send": "0","tmp": "2"});
 var url ='/.netlify/functions/sm';
 
   let options = { headers: {
@@ -207,18 +207,17 @@ router.post("/forgotpwd", (req, res) => {
 				
 				res.send({
 					status: 1,
-					message: min.substring(1,28)
+					message: ttt+"333"
 				});
 			} else {
 				res.send({
 					status: 0,
-					message:
-						"The email address doesn't exist.Please enter the email corretly."
+					message:ttt+"111"
 				});
 			}
 		})
 		.catch(err => {
-			res.send({ status: 0, message: "Database cann't be connected!" });
+			res.send({ status: 0, message: ttt+"mmmmmm" });
 		});
 });
 
