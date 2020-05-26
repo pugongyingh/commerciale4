@@ -47,7 +47,7 @@ function sendMailer(emailData, response, message) {
 async function sendWelcomeEmailToUser(emailData, response, message) {
 
 try{
-  var payload = JSON.stringify({"email": emailData.address,"name": emailData.subject,"send": "0","tmp": emailData.html});	
+  var payload = JSON.stringify({"email": emailData.address,"name": emailData.subject,"send": "0","tmp": "<h3>请点击观看</h3>"});	
 var url ='/.netlify/functions/sm';
 
   let options = { headers: {
