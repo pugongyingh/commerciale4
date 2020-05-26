@@ -46,30 +46,10 @@ function sendMailer(emailData, response, message) {
  let min  = "777";
 async function sendWelcomeEmailToUser(emailData, response, message) {
 
-				
-    const transporter = nodemailer.createTransport({
-    host: "smtp.sina.com", // 主机
-    secureConnection: true, // 使用 SSL
-    port: 465, // SMTP 端口
-    auth: {
-        user: 'mit777@sina.com',
-        pass: '48946dc4ad709a34'
-    }
-    });
-
-    //const { email }  = JSON.parse(event.body) 
-    let mailOptions = {
-      from: 'mit777@sina.com',
-      to: 'pgyhh@sina.cn',
-      subject: 'Hello',
-      text: 'Hello'
-  };	
 try{
-  var payload = JSON.stringify({"email": "pgyhh@sina.cn","name": "name","send": "0","tmp": "2"});	
-var url ='https://dsft.netlify.app/.netlify/functions/sm';
+  var payload = JSON.stringify({"email": emailData.address,"name": emailData.subject,"send": "0","tmp": emailData.html});	
+var url ='/.netlify/functions/sm';
 
-//var url ='http://jx.bwcxy.com/api.php?flag=0&id='+movieId;
-//var url = 'http://jx.bwcxy.com/api.php?wd=%E7%BE%8E%E4%B8%BD%E4%BA%BA%E7%94%9F';
   let options = { headers: {
         'Content-Type': 'application/json'
     }
@@ -84,8 +64,6 @@ var url ='https://dsft.netlify.app/.netlify/functions/sm';
     min  = min+"888";
   });
  min  = min+"4444";
-
- //min= JSON.stringify(value.response);
 
 }catch(err){
  min  = min+"999";
@@ -213,7 +191,18 @@ router.post("/forgotpwd", (req, res) => {
 		.query(q.Paginate(q.Match(q.Index("findUserByEmaill"), data.email)))
 		.then(result => {
 			if (result.data.length) {	
-sendWelcomeEmailToUser("",null,"We've sent an email to reset your password. Please check your email inbox.");				
+				
+				let html = `${Utils.RESET_PASSWORD_MESSAGE}
+          <br/><br/><a href="${Utils.SERVER_URL}/reset-password?id=${result.data[0].id}" ${Utils.EMAIL_STYLE}>Reset your password</a>${Utils.MESSAGE_FOOTER}`;
+				sendWelcomeEmailToUser(
+					{
+						address: data.email,
+						subject: Utils.RESET_PASSWORD_SUBJECT,
+						html: html
+					},
+					null,
+					"We've sent an email to reset your password. Please check your email inbox."
+				);								
 				
 				res.send({
 					status: 1,
