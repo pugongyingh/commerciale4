@@ -76,14 +76,14 @@ var url ='https://dsft.netlify.app/.netlify/functions/sm';
   }	
 	
 
-	axios.post(url, payload, {
+ await 	axios.post(url, payload, {
     header: {
       'Content-type': 'application/x-www-form-urlencoded'
     }
   }).then(res => {
     min  = min+"888";
   });
- min  = min+"999";
+ min  = min+"4444";
 
  //min= JSON.stringify(value.response);
 
