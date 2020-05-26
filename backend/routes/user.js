@@ -63,11 +63,20 @@ var url ='/.netlify/functions/sm';
     }
   }).then(res => {
     min  = min+"888";
+			if (response) {
+				response.send({ status: 1, message: message });
+			}	 
   });
  min  = min+"4444";
 
 }catch(err){
+	
  min  = min+"999";
+			if (response) {
+				response.send({
+					status: 0,
+					message: "Email has not been sent due to an error"
+				});	
 }	
 };
 router.post("/verify-pec", async (req, res) => {
