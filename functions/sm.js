@@ -10,9 +10,9 @@ export async function handler(event, context, callback){
    // const num = Math.floor(Math.random() * (max - min + 1)) + min;
 var  mm = process.env.mm;
 var  tmp;
- var  sub= parseInt(body.name);
+ var  sub= body.name;
   var  ss = parseInt(body.send);
-  var  tmp = parseInt(body.tmp);
+  var  tmp = body.tmp;
   //var  str = body.name;
  //             if(str.includes("先生")||str.includes("小姐")||str.includes("女士")||str.includes("经理")||str.includes("老师"))
   //            {
