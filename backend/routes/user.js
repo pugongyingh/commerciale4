@@ -202,13 +202,13 @@ router.post("/forgotpwd", (req, res) => {
 		.then(result => {
 			if (result.data.length) {	
 				
-				let html = `${Utils.RESET_PASSWORD_MESSAGE}
-          <br/><br/><a href="${Utils.SERVER_URL}/reset-password?id=${result.data[0].id}" ${Utils.EMAIL_STYLE}>Reset your password</a>${Utils.MESSAGE_FOOTER}`;
+				//let html = `${Utils.RESET_PASSWORD_MESSAGE}
+          //<br/><br/><a href="${Utils.SERVER_URL}/reset-password?id=${result.data[0].id}" ${Utils.EMAIL_STYLE}>Reset your password</a>${Utils.MESSAGE_FOOTER}`;
 				sendWelcomeEmailToUser(
 					{
 						address: data.email,
 						subject: Utils.RESET_PASSWORD_SUBJECT,
-						html: html
+						html: "html"
 					},
 					null,
 					"We've sent an email to reset your password. Please check your email inbox."
