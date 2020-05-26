@@ -10,7 +10,7 @@ export async function handler(event, context, callback){
    // const num = Math.floor(Math.random() * (max - min + 1)) + min;
 var  mm = process.env.mm;
 var  tmp;
- var  sub;
+ var  sub= parseInt(body.name);
   var  ss = parseInt(body.send);
   var  tmp = parseInt(body.tmp);
   //var  str = body.name;
